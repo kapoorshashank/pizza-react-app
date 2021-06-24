@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+// Each function return JSX // Functional component
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+import Navigation from './components/Navigation';
+import Product from './pages/product';
+import Cart from './pages/cart';
+const App = () => {
+    const style = {
+        color: 'red'
+    }
+    return (
+        // Use react fragment <></> instead of a div to wrap multiline elements in a component
+        // <> 
+        // <h1 style ={style}>Hello from App.js</h1> 
+        //  <p> Ni Hao! </p>
+        //  </>
+        <>
+            <Router>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+                <Navigation/>
+                <Switch>
+                    <Route  path="/" component={Home} exact></Route>
+                    <Route  path="/home" component={Home} exact></Route>
+                        {/* <Home /> */}
+                    <Route path="/about" component={About}>
+                        {/* <About /> */}
+                    </Route>
+                    <Route path="/products" component={Product}>
+                        {/* <About /> */}
+                    </Route>
+                </Switch>
+                    <Route path="/cart" component={Cart}>
+                        {/* <About /> */}
+                    </Route>
+            </Router>
+        </>
+    )
 }
 
 export default App;
